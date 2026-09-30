@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glow de Beauty — Admin</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- LOGIN -->
+
+    <div class="login-screen" id="loginScreen">
+
+        <div class="login-box">
+
+            <div class="admin-logo">
+                GLOW DE BEAUTY
+                <span>ADMIN PANEL</span>
+            </div>
+
+            <h2>Admin kirish</h2>
+
+            <input
+                type="text"
+                id="adminUsername"
+                placeholder="Login"
+            >
+
+            <input
+                type="password"
+                id="adminPassword"
+                placeholder="Parol"
+            >
+
+            <button id="loginBtn">
+                Kirish
+            </button>
+
+            <p id="loginError"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADMIN PANEL -->
+
+    <div class="admin-layout" id="adminPanel">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                GLOW DE BEAUTY
+                <small>ADMIN</small>
+            </div>
+
+            <nav>
+
+                <button class="admin-nav active"
+                        data-page="dashboard">
+                    Dashboard
+                </button>
+
+                <button class="admin-nav"
+                        data-page="products">
+                    Mahsulotlar
+                </button>
+
+                <button class="admin-nav"
+                        data-page="orders">
+                    Buyurtmalar
+                </button>
+
+                <button class="admin-nav"
+                        data-page="customers">
+                    Mijozlar
+                </button>
+
+                <button class="admin-nav"
+                        data-page="settings">
+                    Sozlamalar
+                </button>
+
+            </nav>
+
+            <button id="logoutBtn" class="logout-btn">
+                Chiqish
+            </button>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="admin-main">
+
+            <header class="admin-header">
+
+                <div>
+                    <span>GLOW DE BEAUTY</span>
+                    <h1 id="pageTitle">
+                        Dashboard
+                    </h1>
+                </div>
+
+                <div class="admin-status">
+                    Admin
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD -->
+
+            <section
+                class="admin-page active"
+                id="dashboard"
+            >
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <span>Mahsulotlar</span>
+                        <strong id="productCount">
+                            0
+                        </strong>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Buyurtmalar</span>
+                        <strong id="orderCount">
+                            0
+                        </strong>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Mijozlar</span>
+                        <strong id="customerCount">
+                            0
+                        </strong>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Sotuv</span>
+                        <strong id="salesTotal">
+                            0 so‘m
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card">
+
+                    <div class="card-heading">
+                        <h2>So‘nggi buyurtmalar</h2>
+
+                        <button
+                            data-page="orders"
+                            class="open-page"
+                        >
+                            Barchasi
+                        </button>
+                    </div>
+
+                    <div id="recentOrders">
+                        <p class="empty">
+                            Hozircha buyurtmalar yo‘q.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PRODUCTS -->
+
+            <section
+                class="admin-page"
+                id="products"
+            >
+
+                <div class="page-heading">
+
+                    <div>
+                        <span>CATALOG</span>
+                        <h2>Mahsulotlar</h2>
+                    </div>
+
+                    <button
+                        id="addProductBtn"
+                        class="primary-btn"
+                    >
+                        + Mahsulot qo‘shish
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="products-admin-grid"
+                    id="adminProducts"
+                >
+
+                    <p class="empty">
+                        Hozircha mahsulotlar yo‘q.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ORDERS -->
+
+            <section
+                class="admin-page"
+                id="orders"
+            >
+
+                <div class="page-heading">
+
+                    <div>
+                        <span>ORDERS</span>
+                        <h2>Buyurtmalar</h2>
+                    </div>
+
+                </div>
+
+                <div id="adminOrders">
+
+                    <p class="empty">
+                        Hozircha buyurtmalar yo‘q.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- CUSTOMERS -->
+
+            <section
+                class="admin-page"
+                id="customers"
+            >
+
+                <div class="page-heading">
+
+                    <div>
+                        <span>CUSTOMERS</span>
+                        <h2>Mijozlar</h2>
+                    </div>
+
+                </div>
+
+                <div id="adminCustomers">
+
+                    <p class="empty">
+                        Hozircha mijozlar yo‘q.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- SETTINGS -->
+
+            <section
+                class="admin-page"
+                id="settings"
+            >
+
+                <div class="page-heading">
+
+                    <div>
+                        <span>SETTINGS</span>
+                        <h2>Sozlamalar</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <h3>Yetkazib berish</h3>
+
+                    <div class="setting-row">
+
+                        <label>
+                            FAST
+                            <input
+                                type="number"
+                                id="fastPrice"
+                                value="11500"
+                            >
+                        </label>
+
+                        <span>so‘m / 100 g</span>
+
+                    </div>
+
+
+                    <div class="setting-row">
+
+                        <label>
+                            SLOW
+                            <input
+                                type="number"
+                                id="slowPrice"
+                                value="7700"
+                            >
+                        </label>
+
+                        <span>so‘m / 100 g</span>
+
+                    </div>
+
+
+                    <button
+                        id="saveSettings"
+                        class="primary-btn"
+                    >
+                        Saqlash
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ADD PRODUCT MODAL -->
+
+    <div
+        class="product-modal"
+        id="productModal"
+    >
+
+        <div class="product-modal-box">
+
+            <div class="modal-heading">
+
+                <h2>Mahsulot qo‘shish</h2>
+
+                <button id="closeProductModal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="productForm">
+
+                <label>
+                    Mahsulot nomi
+                    <input
+                        type="text"
+                        id="productName"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Kategoriya
+
+                    <select id="productCategory" required>
+
+                        <option value="">
+                            Tanlang
+                        </option>
+
+                        <option value="clothes">
+                            Kiyimlar
+                        </option>
+
+                        <option value="makeup">
+                            Make Up
+                        </option>
+
+                        <option value="accessories">
+                            Aksessuarlar
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <label>
+                    Narxi
+                    <input
+                        type="number"
+                        id="productPrice"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Chegirmadagi narx
+                    <input
+                        type="number"
+                        id="productDiscountPrice"
+                    >
+                </label>
+
+
+                <label>
+                    Og‘irligi (gramm)
+                    <input
+                        type="number"
+                        id="productWeight"
+                        value="100"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Qoldiq (stock)
+                    <input
+                        type="number"
+                        id="productStock"
+                        value="1"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Rasm URL
+                    <input
+                        type="url"
+                        id="productImage"
+                        placeholder="https://..."
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Ranglar
+                    <input
+                        type="text"
+                        id="productColors"
+                        placeholder="Qora, Oq, Bej"
+                    >
+                </label>
+
+
+                <label>
+                    O‘lchamlar
+                    <input
+                        type="text"
+                        id="productSizes"
+                        placeholder="S, M, L"
+                    >
+                </label>
+
+
+                <label class="check-row">
+
+                    <input
+                        type="checkbox"
+                        id="productNew"
+                    >
+
+                    Yangi mahsulot
+
+                </label>
+
+
+                <label class="check-row">
+
+                    <input
+                        type="checkbox"
+                        id="productPopular"
+                    >
+
+                    Mashhur mahsulot
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn full"
+                >
+                    Mahsulotni saqlash
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="admin.js"></script>
+
+</body>
+</html>
