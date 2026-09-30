@@ -541,3 +541,114 @@ body {
         font-size: 21px;
     }
 }
+/* REGISTER */
+
+.register-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(35, 25, 20, 0.65);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 400;
+    overflow-y: auto;
+}
+
+.register-modal.active {
+    display: flex;
+}
+
+.register-box {
+    width: min(600px, 100%);
+    max-height: 94vh;
+    overflow-y: auto;
+    background: var(--cream);
+    padding: 30px;
+}
+
+.register-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.register-header h2 {
+    margin-top: 7px;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.register-header button {
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+#registerForm label:not(.register-consent) {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#registerForm input,
+#registerForm select,
+#registerForm textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d8d0ca;
+    background: white;
+    color: var(--brown);
+    font-family: inherit;
+    outline: none;
+}
+
+#registerForm textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.register-consent {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 400 !important;
+    line-height: 1.4;
+}
+
+.register-consent input {
+    width: auto !important;
+    margin-top: 3px;
+}
+
+#registerBtn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: var(--brown);
+    color: white;
+    cursor: pointer;
+}
+
+#registerBtn:disabled {
+    background: #c8c0ba;
+    cursor: not-allowed;
+}
+
+#registerBtn:not(:disabled):hover {
+    background: var(--caramel);
+}
