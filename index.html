@@ -6,6 +6,122 @@
     <title>Glow de Beauty</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<!-- REGISTER MODAL -->
+
+<div class="register-modal" id="registerModal">
+
+    <div class="register-box">
+
+        <div class="register-header">
+            <div>
+                <span class="small-title">GLOW DE BEAUTY</span>
+                <h2>Ro‘yxatdan o‘tish</h2>
+            </div>
+
+            <button id="closeRegister">×</button>
+        </div>
+
+        <form id="registerForm">
+
+            <label>
+                Ism va familiya *
+                <input
+                    type="text"
+                    id="registerName"
+                    placeholder="Ism va familiyangiz"
+                    required
+                >
+            </label>
+
+            <label>
+                Telefon raqam *
+                <input
+                    type="tel"
+                    id="registerPhone"
+                    placeholder="+998 90 123 45 67"
+                    required
+                >
+            </label>
+
+            <label>
+                Viloyat *
+                <select id="registerRegion" required>
+                    <option value="">Viloyatni tanlang</option>
+                    <option>Toshkent shahri</option>
+                    <option>Toshkent viloyati</option>
+                    <option>Andijon viloyati</option>
+                    <option>Farg‘ona viloyati</option>
+                    <option>Namangan viloyati</option>
+                    <option>Samarqand viloyati</option>
+                    <option>Buxoro viloyati</option>
+                    <option>Qashqadaryo viloyati</option>
+                    <option>Surxondaryo viloyati</option>
+                    <option>Jizzax viloyati</option>
+                    <option>Sirdaryo viloyati</option>
+                    <option>Navoiy viloyati</option>
+                    <option>Xorazm viloyati</option>
+                    <option>Qoraqalpog‘iston Respublikasi</option>
+                </select>
+            </label>
+
+            <label>
+                Shahar / tuman *
+                <input
+                    type="text"
+                    id="registerCity"
+                    placeholder="Shahar yoki tuman"
+                    required
+                >
+            </label>
+
+            <label>
+                To‘liq manzil *
+                <textarea
+                    id="registerAddress"
+                    placeholder="Ko‘cha, uy, xonadon..."
+                    required
+                ></textarea>
+            </label>
+
+            <label>
+                BTS filiali *
+                <select id="registerBts" required>
+                    <option value="">BTS filialini tanlang</option>
+                    <option>Chirchiq BTS</option>
+                    <option>Toshkent BTS</option>
+                    <option>Olmaliq BTS</option>
+                    <option>Angren BTS</option>
+                    <option>Samarqand BTS</option>
+                    <option>Farg‘ona BTS</option>
+                    <option>Andijon BTS</option>
+                    <option>Buxoro BTS</option>
+                </select>
+            </label>
+
+            <label class="register-consent">
+                <input
+                    type="checkbox"
+                    id="registerConsent"
+                >
+
+                <span>
+                    Ma’lumotlarimni saqlashga roziman.
+                </span>
+            </label>
+
+            <button
+                type="submit"
+                id="registerBtn"
+                disabled
+            >
+                Ro‘yxatdan o‘tish
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
 
 <body>
 
