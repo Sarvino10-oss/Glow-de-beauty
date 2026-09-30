@@ -605,3 +605,161 @@ renderProducts();
 updateCartCount();
 renderCart();
 applyLanguage();
+/* =========================
+   CUSTOMER REGISTRATION
+========================= */
+
+const registerModal =
+    document.getElementById("registerModal");
+
+const registerForm =
+    document.getElementById("registerForm");
+
+const registerConsent =
+    document.getElementById("registerConsent");
+
+const registerBtn =
+    document.getElementById("registerBtn");
+
+const closeRegister =
+    document.getElementById("closeRegister");
+
+
+/* FORMANI TEKSHIRISH */
+
+function checkRegisterForm() {
+
+    const name =
+        document.getElementById("registerName").value.trim();
+
+    const phone =
+        document.getElementById("registerPhone").value.trim();
+
+    const region =
+        document.getElementById("registerRegion").value;
+
+    const city =
+        document.getElementById("registerCity").value.trim();
+
+    const address =
+        document.getElementById("registerAddress").value.trim();
+
+    const bts =
+        document.getElementById("registerBts").value;
+
+
+    const valid =
+        name.length >= 2 &&
+        phone.length >= 9 &&
+        region !== "" &&
+        city.length >= 2 &&
+        address.length >= 5 &&
+        bts !== "" &&
+        registerConsent.checked;
+
+
+    registerBtn.disabled = !valid;
+}
+
+
+/* INPUT O‘ZGARISHI */
+
+registerForm?.addEventListener(
+    "input",
+    checkRegisterForm
+);
+
+registerForm?.addEventListener(
+    "change",
+    checkRegisterForm
+);
+
+
+/* RO‘YXATDAN O‘TISH */
+
+registerForm?.addEventListener("submit", (e) => {
+
+    e.preventDefault();
+
+    if (registerBtn.disabled) return;
+
+
+    const customer = {
+
+        name:
+            document.getElementById("registerName").value.trim(),
+
+        phone:
+            document.getElementById("registerPhone").value.trim(),
+
+        region:
+            document.getElementById("registerRegion").value,
+
+        city:
+            document.getElementById("registerCity").value.trim(),
+
+        address:
+            document.getElementById("registerAddress").value.trim(),
+
+        bts:
+            document.getElementById("registerBts").value,
+
+        registeredAt:
+            new Date().toISOString(),
+
+        orders: 0,
+
+        totalSpent: 0
+
+    };
+
+
+    localStorage.setItem(
+        "glowBeautyCustomer",
+        JSON.stringify(customer)
+    );
+
+
+    registerModal.classList.remove("active");
+
+
+    alert(
+        "Ro‘yxatdan o‘tish muvaffaqiyatli yakunlandi!"
+    );
+
+});
+
+
+/* YOPISH */
+
+closeRegister?.addEventListener("click", () => {
+
+    registerModal.classList.remove("active");
+
+});
+
+
+/* SAHIFA OCHILGANDA */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const customer =
+        localStorage.getItem("glowBeautyCustomer");
+
+
+    /*
+       Agar mijoz hali ro‘yxatdan o‘tmagan bo‘lsa,
+       oynani avtomatik ochamiz.
+    */
+
+    if (!customer) {
+
+        setTimeout(() => {
+
+            registerModal?.classList.add("active");
+
+        }, 700);
+
+    }
+
+});
