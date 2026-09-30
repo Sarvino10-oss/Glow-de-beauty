@@ -1,198 +1,199 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glow de Beauty</title>
-
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: #f4fff8;
-  color: #25352d;
-}
-
-.header {
-  padding: 25px 20px 15px;
-}
-
-.logo {
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.subtitle {
-  color: #789187;
-  margin-top: 5px;
-}
-
-.search {
-  margin: 15px 20px;
-  background: white;
-  padding: 14px;
-  border-radius: 15px;
-  color: #91a49a;
-  box-shadow: 0 3px 12px #dceee4;
-}
-
-h2 {
-  margin: 20px;
-  font-size: 20px;
-}
-
-.categories {
-  display: flex;
-  gap: 10px;
-  padding: 0 20px;
-}
-
-.category {
-  flex: 1;
-  background: #dff5e8;
-  padding: 18px 5px;
-  border-radius: 18px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.products {
-  display: flex;
-  gap: 12px;
-  padding: 0 20px;
-  overflow-x: auto;
-}
-
-.product {
-  min-width: 155px;
-  background: white;
-  border-radius: 18px;
-  padding: 10px;
-  box-shadow: 0 3px 12px #dceee4;
-}
-
-.product-image {
-  height: 150px;
-  background: #eaf8f0;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 45px;
-}
-
-.product-name {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.code {
-  color: #82978c;
-  font-size: 12px;
-  margin-top: 4px;
-}
-
-.price {
-  margin-top: 8px;
-  font-weight: bold;
-}
-
-.bottom {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: white;
-  display: flex;
-  justify-content: space-around;
-  padding: 15px 5px;
-  box-shadow: 0 -3px 15px #dceee4;
-}
-
-.bottom div {
-  text-align: center;
-  font-size: 13px;
-}
-
-.icon {
-  font-size: 22px;
-  margin-bottom: 3px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow de Beauty</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="header">
-  <div class="logo">Glow de Beauty 🎀</div>
-  <div class="subtitle">Find your little glow ✨</div>
+<header class="header">
+    <div class="logo">
+        <span>GLOW</span>
+        <small>de BEAUTY</small>
+    </div>
+
+    <div class="header-actions">
+        <button id="languageBtn">RU</button>
+        <button class="search-btn" onclick="openSearch()">Qidiruv</button>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="hero-small">GLOW DE BEAUTY</p>
+
+        <h1 id="heroTitle">
+            Go‘zallik va uslub<br>
+            bir joyda
+        </h1>
+
+        <p id="heroText">
+            Kiyimlar, make up va aksessuarlar
+        </p>
+
+        <button class="gold-btn" onclick="scrollToCategories()">
+            Xarid qilish
+        </button>
+    </div>
+</section>
+
+<section class="categories" id="categories">
+
+    <div class="section-title">
+        <span id="categoryLabel">Kategoriyalar</span>
+        <h2 id="categoryTitle">O‘zingizga mosini tanlang</h2>
+    </div>
+
+    <div class="category-grid">
+
+        <button class="category-card" onclick="openCategory('clothes')">
+            <div class="category-image clothes-image"></div>
+            <div class="category-name">
+                <span id="clothesText">Kiyimlar</span>
+            </div>
+        </button>
+
+        <button class="category-card" onclick="openCategory('makeup')">
+            <div class="category-image makeup-image"></div>
+            <div class="category-name">
+                <span id="makeupText">Make Up</span>
+            </div>
+        </button>
+
+        <button class="category-card" onclick="openCategory('accessories')">
+            <div class="category-image accessories-image"></div>
+            <div class="category-name">
+                <span id="accessoriesText">Aksessuarlar</span>
+            </div>
+        </button>
+
+    </div>
+</section>
+
+<section class="products-section">
+
+    <div class="section-heading">
+        <div>
+            <p class="small-title" id="saleSmall">MAXSUS TAKLIFLAR</p>
+            <h2 id="saleTitle">Skidkadagi mahsulotlar</h2>
+        </div>
+
+        <button class="view-all" onclick="showAllProducts()">
+            Barchasi
+        </button>
+    </div>
+
+    <div class="products-grid" id="saleProducts">
+
+        <!-- Mahsulotlar JavaScript orqali chiqadi -->
+
+    </div>
+
+</section>
+
+<section class="products-section">
+
+    <div class="section-heading">
+        <div>
+            <p class="small-title">NEW</p>
+            <h2 id="newTitle">Yangi mahsulotlar</h2>
+        </div>
+    </div>
+
+    <div class="products-grid" id="newProducts">
+
+        <!-- Mahsulotlar JavaScript orqali chiqadi -->
+
+    </div>
+
+</section>
+
+<div class="search-modal" id="searchModal">
+
+    <div class="search-box">
+
+        <button class="close-search" onclick="closeSearch()">×</button>
+
+        <h2 id="searchTitle">Mahsulot qidirish</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Mahsulot nomini yozing..."
+            oninput="searchProducts()"
+        >
+
+        <div id="searchResults"></div>
+
+    </div>
+
 </div>
 
-<div class="search">
-  🔍 Mahsulot qidirish...
-</div>
+<div class="cart-panel" id="cartPanel">
 
-<h2>Kategoriyalar</h2>
+    <div class="cart-header">
 
-<div class="categories">
-  <div class="category">💄<br>CK</div>
-  <div class="category">👗<br>KL</div>
-  <div class="category">🎀<br>AK</div>
-</div>
+        <h2 id="cartTitle">Savatcha</h2>
 
-<h2>New In ✨</h2>
+        <button onclick="closeCart()">×</button>
 
-<div class="products">
+    </div>
 
-  <div class="product">
-    <div class="product-image">💄</div>
-    <div class="product-name">Beauty Product</div>
-    <div class="code">CK-001</div>
-    <div class="price">149 000 so'm</div>
-  </div>
+    <div id="cartItems"></div>
 
-  <div class="product">
-    <div class="product-image">👜</div>
-    <div class="product-name">Mini Bag</div>
-    <div class="code">AK-001</div>
-    <div class="price">179 000 so'm</div>
-  </div>
+    <div class="cart-bottom">
 
-  <div class="product">
-    <div class="product-image">👗</div>
-    <div class="product-name">Trendy Dress</div>
-    <div class="code">KL-001</div>
-    <div class="price">249 000 so'm</div>
-  </div>
+        <div class="total-row">
+            <span id="totalText">Jami:</span>
+            <strong id="cartTotal">0 so‘m</strong>
+        </div>
+
+        <button class="checkout-btn" onclick="checkout()">
+            <span id="checkoutText">Buyurtma berish</span>
+        </button>
+
+    </div>
 
 </div>
 
-<div class="bottom">
-  <div>
-    <div class="icon">🏠</div>
-    Bosh sahifa
-  </div>
+<div class="overlay" id="overlay" onclick="closePanels()"></div>
 
-  <div>
-    <div class="icon">🛍️</div>
-    Katalog
-  </div>
+<nav class="bottom-nav">
 
-  <div>
-    <div class="icon">🛒</div>
-    Savatcha
-  </div>
+    <button onclick="goHome()">
+        <span class="nav-icon">⌂</span>
+        <small id="homeNav">Bosh sahifa</small>
+    </button>
 
-  <div>
-    <div class="icon">📦</div>
-    Buyurtmalar
-  </div>
-</div>
+    <button onclick="openCategory('clothes')">
+        <span class="nav-icon">C</span>
+        <small id="clothesNav">Kiyimlar</small>
+    </button>
+
+    <button onclick="openCategory('makeup')">
+        <span class="nav-icon">M</span>
+        <small id="makeupNav">Make Up</small>
+    </button>
+
+    <button onclick="openCategory('accessories')">
+        <span class="nav-icon">A</span>
+        <small id="accessoriesNav">Aksessuarlar</small>
+    </button>
+
+    <button onclick="openCart()">
+        <span class="nav-icon cart-icon">
+            Savat
+            <b id="cartCount">0</b>
+        </span>
+        <small id="cartNav">Savatcha</small>
+    </button>
+
+</nav>
+
+<script src="script.js"></script>
 
 </body>
 </html>
